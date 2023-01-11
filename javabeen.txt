@@ -1,0 +1,48 @@
+index.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>useBean, getProperty and setProperty example</title>
+</head>
+<body>
+<form action="userdetails.jsp" method="post">
+User Name: <input type="text" name="username"><br>
+User Password: <input type="password" name="password"><br>
+User Age: <input type="text" name="age"><br>
+<input type="submit" value="register">
+</form>
+</body></html>
+Userdetails.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<jsp:useBean id="userinfo" class="ganesh.Details"></jsp:useBean>
+<jsp:setProperty property="*" name="userinfo"/>
+You have enterted below details:<br>
+Your Name: <jsp:getProperty property="username" name="userinfo"/><br>
+Your Password:<jsp:getProperty property="password" name="userinfo"/><br>
+Your Age:<jsp:getProperty property="age" name="userinfo" /><br>
+JavaBean class: Details.java
+package ganesh;
+public class Details {
+	public Details() {}
+    private String username;
+    private int age;
+    private String password;
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public int getAge() {
+		return age;}
+	public void setAge(int age) {
+		this.age = age;}
+	public String getPassword() {
+		return password;}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+}
